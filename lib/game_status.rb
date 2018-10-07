@@ -15,12 +15,15 @@ WIN_COMBINATIONS = [
 ]
 
 def won?(board)
-  WIN_COMBINATIONS.each do |winRow|
-    if winRow.all? {|spot| board[spot] == "X"} || winRow.all? {|spot| board[spot] == "O"}
-      return winRow
-    end
+  WIN_COMBINATIONS.detect do |winRow|
+    winRow.all? {|spot| board[spot] == "X"} || winRow.all? {|spot| board[spot] == "O"}
   end
-  return false
+  # WIN_COMBINATIONS.each do |winRow|
+  #   if winRow.all? {|spot| board[spot] == "X"} || winRow.all? {|spot| board[spot] == "O"}
+  #     return winRow
+  #   end
+  # end
+  # return false
 end
 
 def full?(board)
